@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() { // document : <body> 
     let h3Tag = document.getElementsByTagName('h3'); // HTMLCollection(여러개) 타입으로 리턴하겠소
     console.log(h3Tag);
     h3Tag[1].innerHTML = 'contents changed';
-    
+
     let first = document.getElementById('first'); // id 값에 해당하는 요소 하나를 가져온다
     console.log(first);
     first.innerHTML = 'Git Changed';
@@ -36,6 +36,5 @@ document.addEventListener('DOMContentLoaded', function() { // document : <body> 
     // ul 하위요소 <li>Mango</li>
     let ulTag = document.querySelector('ul');
     ulTag.appendChild(newList);
-
+    
 });
-
