@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody id="body">
-                
+
             </tbody>
         </table>
     </div>
@@ -45,23 +45,45 @@
             let score = document.forms['frm'].elements['uscore'].value;
             let age = document.forms['frm'].elements['uage'].value;
 
-            let person = {};
-            person.id = id;
-            person.name = name;
-            person.score = score;
-            person.age = age;
+            if (id == '' || name == '' || score == '' || age == '') {
+                alert('제대로 적으소');
+                return;
+            }
 
-            document.getElementById('body').appendChild(person);
+            let person = {
+                id: id,
+                name: name,
+                score: score,
+                age: age
+            }
+
+            // let person = {};
+            // person.id = id;
+            // person.name = name;
+            // person.score = score;
+            // person.age = age;
+
+            document.getElementById('body').appendChild(makeTr(person));
+
+            // 초기화.
+            document.forms['frm'].elements['uid'].value = "";
+            document.forms['frm'].elements['uname'].value = "";
+            document.forms['frm'].elements['uscore'].value = "";
+            document.forms['frm'].elements['uage'].value = "";
+
+            // 포커스.
+            document.forms['frm'].elements['uid'].focus();
         }
 
-        function makeTr(obj) {
-
+        function makeTr(obj) { // obj => {id:?, name:?, score:?, age:?}
             let tr = document.createElement('tr');
 
-            let td = document.createElement('td');
-            td.innerHTML = id;
-            tr.appendChild(td);
-
+            for (let f in obj) {
+                let td = document.createElement('td');
+                td.innerHTML = obj[f]; // obj.id, obj.name, obj.score, obj.age
+                tr.appendChild(td);
+            }
+            return tr;
         }
     </script>
 </body>
