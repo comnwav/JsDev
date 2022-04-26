@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', function() { // document : <body> 
     newList.innerHTML = 'Mango';
     console.log(newList);
     
-    console.log('3');
     
     // ul 하위요소 <li>Mango</li>
     let ulTag = document.querySelector('ul');
     ulTag.appendChild(newList);
     
 });
+console.log('3');
