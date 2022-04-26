@@ -38,13 +38,47 @@
     <script>
         // console.log(document.forms[`frm`].elements[`uid`].value);
 
+        function init() {
+
+            let data = [{
+                    id: 101,
+                    name: '홍길동',
+                    score: 80,
+                    age: 19
+                },
+                {
+                    id: 102,
+                    name: '박길동',
+                    score: 88,
+                    age: 22
+                },
+                {
+                    id: 103,
+                    name: '김길동',
+                    score: 90,
+                    age: 42
+                }
+            ]
+
+            data.forEach(e => {
+                document.getElementById('body').appendChild(makeTr(e));
+            });
+            // data 반복적을 makeTr() => id="body" appendChild();
+            
+        }
+
+        init();
+
         function saveFnc(e) {
+
+        
+
             e.preventDefault(); // prevent default fnc
             let id = document.forms['frm'].elements['uid'].value;
             let name = document.forms['frm'].elements['uname'].value;
             let score = document.forms['frm'].elements['uscore'].value;
             let age = document.forms['frm'].elements['uage'].value;
-
+            
             if (id == '' || name == '' || score == '' || age == '') {
                 alert('제대로 적으소');
                 return;
@@ -62,21 +96,21 @@
             // person.name = name;
             // person.score = score;
             // person.age = age;
-
+            
             document.getElementById('body').appendChild(makeTr(person));
-
+            
             // 초기화.
             document.forms['frm'].elements['uid'].value = "";
             document.forms['frm'].elements['uname'].value = "";
             document.forms['frm'].elements['uscore'].value = "";
             document.forms['frm'].elements['uage'].value = "";
-
+            
             // 포커스.
             document.forms['frm'].elements['uid'].focus();
         }
-
+        
         function makeTr(obj) { // obj => {id:?, name:?, score:?, age:?}
-            let tr = document.createElement('tr');
+        let tr = document.createElement('tr');
 
             for (let f in obj) {
                 let td = document.createElement('td');
